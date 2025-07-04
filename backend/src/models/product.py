@@ -10,5 +10,5 @@ class Product(CamelModel):
     name: str
     price: Decimal
     color: str
-    image_url: str
+    image_url: str | None
     predicted_sales_quantity: int
