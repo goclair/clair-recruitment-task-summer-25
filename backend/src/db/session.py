@@ -9,9 +9,7 @@ _async_engine: AsyncEngine | None = None
 _AsyncSessionLocal: async_sessionmaker[AsyncSession] | None = None
 
 
-def init_async_engine(
-    user: str, password: str, host: str, name: str, port: int = 5432
-) -> None:
+def init_async_engine(user: str, password: str, host: str, name: str, port: int = 5432) -> None:
     db_url = f"postgresql+asyncpg://{user}:{password}@{host}:{port}/{name}"
 
     print(db_url)
@@ -28,7 +26,5 @@ def init_async_engine(
 
 def get_async_session() -> AsyncSession:
     if not _AsyncSessionLocal:
-        raise RuntimeError(
-            "Async session factory not initialized. Call init_async_engine() first."
-        )
+        raise RuntimeError("Async session factory not initialized. Call init_async_engine() first.")
     return _AsyncSessionLocal()

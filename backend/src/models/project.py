@@ -6,7 +6,7 @@ from src.models.utils import CamelModel
 
 
 class ProjectStatus(Enum):
-    INITIALIZING = "initializing"
+    CREATED = "created"
     READY = "ready"
 
 

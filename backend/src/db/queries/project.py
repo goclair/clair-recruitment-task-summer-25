@@ -19,11 +19,7 @@ async def fetch_project(session: AsyncSession, project_id: int) -> DataObject:
     Raises:
         ValueError: If the project is not found
     """
-    query = (
-        select(Project)
-        .options(selectinload(Project.products))
-        .where(Project.id == project_id)
-    )
+    query = select(Project).options(selectinload(Project.products)).where(Project.id == project_id)
     result = (await session.execute(query)).scalar_one_or_none()
 
     if not result:
